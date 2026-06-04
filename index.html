@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="ms" class="scroll-smooth h-full overflow-x-hidden">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Court Gelong Bilal (Dewan Serbaguna Lorong Surau Baru) - Tempahan Gelanggang Badminton</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans (Sangat profesional, formal dan mudah dibaca) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Pengaturan Scrollbar Kustom */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #22c55e;
+        }
+        /* Mengelakkan limpahan mendatar secara agresif pada elemen HTML & Body */
+        body {
+            overflow-x: hidden !important;
+            position: relative;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="font-sans bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-slate-950 overflow-x-hidden">
+
+    <!-- Latar Belakang 4K Badminton Court dengan Overlay Gelap -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <img 
+            id="bg-image"
+            src="dewan.jpg" 
+            alt="Court Gelong Bilal (Dewan Serbaguna Lorong Surau Baru) Background" 
+            class="w-full h-full object-cover filter brightness-[0.20] contrast-[1.05]"
+            onerror="if(this.src.includes('dewan.jpg')) { this.src='image.png'; } else if(this.src.includes('image.png')) { this.src='input_file_0.png'; } else if(this.src.includes('input_file_0.png')) { this.src='https://maps.googleapis.com/maps/api/streetview?size=1620x1080&location=5.2947513,103.1368465&fov=90&heading=150&pitch=5'; } else { this.src='https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=2560&q=85'; this.onerror=null; }"
+        />
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-950/90 via-slate-950/50 to-slate-950/95"></div>
+    </div>
+
+    <!-- Header / Navigasi Utama -->
+    <header class="relative z-40 w-full backdrop-blur-md bg-slate-950/70 border-b border-slate-800/80 sticky top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo Brand -->
+            <a href="#" onclick="showSection('home')" class="flex items-center space-x-3 group">
+                <div class="bg-brand-500 text-slate-950 p-2.5 rounded-xl shadow-lg shadow-brand-500/20 transform group-hover:rotate-12 transition-transform duration-300 shrink-0">
+                    <i class="fa-solid fa-shuttlecock text-xl"></i>
+                </div>
+                <div class="min-w-0">
+                    <span class="text-base sm:text-lg lg:text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-100 to-brand-500 bg-clip-text text-transparent block truncate">
+                        Court Gelong Bilal
+                    </span>
+                    <span id="txt-app-subtitle" class="block text-[8px] sm:text-[9px] text-slate-400 tracking-widest uppercase truncate" data-i18n="app_subtitle">Pusat Badminton Komuniti</span>
+                </div>
+            </a>
+
+            <!-- Bahagian Menu & Penukar Bahasa Desktop -->
+            <div class="flex items-center space-x-2 shrink-0">
+                <!-- Penukar Bahasa Premium Pill -->
+                <div class="flex items-center bg-slate-900/90 border border-slate-800 rounded-xl p-1 shadow-inner mr-1 sm:mr-3">
+                    <button onclick="setLanguage('ms')" id="lang-ms" class="px-2 sm:px-2.5 py-1.5 text-[9px] sm:text-[10px] font-bold rounded-lg transition-all duration-200">MY</button>
+                    <button onclick="setLanguage('en')" id="lang-en" class="px-2 sm:px-2.5 py-1.5 text-[9px] sm:text-[10px] font-bold rounded-lg transition-all duration-200">EN</button>
+                </div>
+
+                <!-- Butang Menu 3-Garisan Premium (Universal untuk Semua Saiz Skrin) -->
+                <button onclick="toggleDrawer(true)" class="flex items-center space-x-2 sm:space-x-3 px-3 sm:px-4 py-2.5 bg-slate-900/80 border border-slate-800 hover:border-brand-500/50 hover:bg-slate-800 rounded-xl transition-all duration-300 shadow-md group">
+                    <span id="txt-menu-btn" class="text-xs font-bold uppercase tracking-wider text-slate-300 group-hover:text-white hidden sm:inline" data-i18n="menu_btn">Menu Utama</span>
+                    <div class="space-y-1.5 flex flex-col justify-center items-end">
+                        <span class="w-5 h-0.5 bg-brand-500 rounded transition-all duration-300"></span>
+                        <span class="w-4 h-0.5 bg-slate-300 group-hover:w-5 rounded transition-all duration-300"></span>
+                        <span class="w-5 h-0.5 bg-brand-500 rounded transition-all duration-300"></span>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Laci Sisi Gelongsor (Side Drawer Menu Overlay) -->
+    <div id="side-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <!-- Overlay Gelap Belakang -->
+        <div id="drawer-overlay" onclick="toggleDrawer(false)" class="absolute inset-0 bg-slate-950/0 backdrop-blur-[0px] transition-all duration-300 ease-in-out cursor-pointer"></div>
+        
+        <!-- Panel Laci Menu -->
+        <div id="drawer-panel" class="absolute inset-y-0 right-0 w-full sm:w-96 bg-slate-950/95 border-l border-slate-800/80 shadow-2xl flex flex-col justify-between transform translate-x-full transition-transform duration-300 ease-in-out backdrop-blur-xl">
+            <!-- Kepala Laci -->
+            <div class="p-6 border-b border-slate-800/80 flex items-center justify-between">
+                <div class="flex items-center space-x-2.5 min-w-0">
+                    <div class="bg-brand-500 text-slate-950 p-2 rounded-lg shrink-0">
+                        <i class="fa-solid fa-shuttlecock text-sm"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h4 id="txt-drawer-title" class="font-bold text-white leading-tight truncate" data-i18n="drawer_title">Navigasi Laman</h4>
+                        <span id="txt-drawer-subtitle" class="text-[9px] text-slate-500 uppercase tracking-widest font-semibold block truncate" data-i18n="drawer_subtitle">Dewan Lorong Surau Baru</span>
+                    </div>
+                </div>
+                <!-- Butang Tutup -->
+                <button onclick="toggleDrawer(false)" class="p-2 text-slate-400 hover:text-white hover:bg-slate-900 rounded-xl border border-transparent hover:border-slate-800 transition-all">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Isi Kandungan Navigasi -->
+            <div class="p-6 flex-grow space-y-2 overflow-y-auto">
+                <button onclick="showSection('home')" id="nav-home" class="w-full flex items-center justify-between p-3.5 rounded-xl text-left text-sm font-semibold transition-all duration-200">
+                    <span class="flex items-center"><i class="fa-solid fa-house mr-3.5 text-base w-5 text-brand-500"></i><span data-i18n="nav_home">Laman Utama</span></span>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-50"></i>
+                </button>
+                <button onclick="showSection('tempahan')" id="nav-tempahan" class="w-full flex items-center justify-between p-3.5 rounded-xl text-left text-sm font-semibold transition-all duration-200">
+                    <span class="flex items-center"><i class="fa-solid fa-calendar-plus mr-3.5 text-base w-5 text-brand-500"></i><span data-i18n="nav_tempahan">Sewa Gelanggang</span></span>
+                    <span id="lbl-nav-start" class="bg-brand-500/10 text-brand-500 border border-brand-500/20 text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" data-i18n="nav_start_lbl">Mula</span>
+                </button>
+                <button onclick="showSection('senarai')" id="nav-senarai" class="w-full flex items-center justify-between p-3.5 rounded-xl text-left text-sm font-semibold transition-all duration-200">
+                    <span class="flex items-center"><i class="fa-solid fa-clipboard-list mr-3.5 text-base w-5 text-brand-500"></i><span data-i18n="nav_senarai">Senarai Tempahan</span></span>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-50"></i>
+                </button>
+                <button onclick="showSection('sejarah')" id="nav-sejarah" class="w-full flex items-center justify-between p-3.5 rounded-xl text-left text-sm font-semibold transition-all duration-200">
+                    <span class="flex items-center"><i class="fa-solid fa-clock-rotate-left mr-3.5 text-base w-5 text-brand-500"></i><span data-i18n="nav_sejarah">Sejarah Permainan</span></span>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-50"></i>
+                </button>
+                <button onclick="showSection('saranan')" id="nav-saranan" class="w-full flex items-center justify-between p-3.5 rounded-xl text-left text-sm font-semibold transition-all duration-200">
+                    <span class="flex items-center"><i class="fa-solid fa-comment-dots mr-3.5 text-base w-5 text-brand-500"></i><span data-i18n="nav_saranan">Tambah Saranan</span></span>
+                    <i class="fa-solid fa-chevron-right text-[10px] opacity-50"></i>
+                </button>
+            </div>
+
+            <!-- Kaki Laci Menu -->
+            <div class="p-6 border-t border-slate-800/80 bg-slate-950/50 space-y-4">
+                <div class="flex items-center justify-between text-xs text-slate-500">
+                    <span id="txt-drawer-ops" data-i18n="drawer_ops">Waktu Operasi:</span>
+                    <span class="font-bold text-slate-400">8:00 AM - 12:15 AM</span>
+                </div>
+                <a href="https://wa.me/60146233180?text=Salam%20Court%20Gelong%20Bilal%20(Dewan%20Serbaguna%20Lorong%20Surau%20Baru)%2C%20saya%20ingin%20bertanya%20mengenai%20tempahan%20gelanggang." target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold rounded-xl text-center text-xs flex items-center justify-center space-x-2 transition-all shadow-lg shadow-brand-500/10">
+                    <i class="fa-brands fa-whatsapp text-sm"></i>
+                    <span id="txt-drawer-wa" data-i18n="drawer_wa">Sembang WhatsApp</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Area Konten Utama -->
+    <main class="relative z-10 flex-grow flex items-center justify-center py-6 sm:py-10 px-4 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto">
+
+        <!-- 1. SEKSYEN UTAMA (HOME) -->
+        <section id="section-home" class="w-full max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 py-4 sm:py-12 transition-all duration-500">
+            <div class="inline-flex items-center space-x-2 bg-brand-500/10 text-brand-500 border border-brand-500/20 px-3 sm:px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-wider mb-1 sm:mb-2 max-w-full">
+                <i class="fa-solid fa-star animate-pulse shrink-0"></i>
+                <span id="txt-hero-badge" class="truncate" data-i18n="hero_badge">Gelanggang Kayu Dewan Serbaguna</span>
+            </div>
+            
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight sm:leading-none text-white">
+                <span id="txt-hero-title-1" data-i18n="hero_title_1">Alami Permainan Terbaik Di</span> <br>
+                <span class="bg-gradient-to-r from-brand-500 to-emerald-400 bg-clip-text text-transparent drop-shadow-sm">
+                    Court Gelong Bilal 
+                </span>
+                <span id="txt-hero-title-2" class="text-xs sm:text-sm font-semibold text-brand-500 block mt-2" data-i18n="hero_title_2">(Dewan Serbaguna Lorong Surau Baru)</span>
+            </h1>
+
+            <p id="txt-hero-desc" class="text-sm sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed px-2" data-i18n="hero_desc">
+                Kemudahan gelanggang komuniti dengan sistem pencahayaan bebas silau dan lantai kayu berkualiti tinggi untuk keselesaan, lantunan optimum, serta prestasi maksimum permainan anda.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-4 px-2">
+                <!-- Navigasi ke Halaman Tempahan -->
+                <button onclick="showSection('tempahan')" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold rounded-xl shadow-lg shadow-brand-500/20 hover:shadow-brand-500/40 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-3 text-sm sm:text-base">
+                    <i class="fa-solid fa-calendar-days text-lg"></i>
+                    <span id="txt-hero-btn-book" data-i18n="hero_btn_book">Sewa Gelanggang Sekarang</span>
+                </button>
+                <!-- Navigasi ke Senarai Tempahan -->
+                <button onclick="showSection('senarai')" class="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-slate-900/80 hover:bg-slate-800 text-white font-semibold rounded-xl border border-slate-700 hover:border-slate-600 backdrop-blur-sm transition-all duration-200 flex items-center justify-center space-x-3 text-sm sm:text-base">
+                    <i class="fa-solid fa-rectangle-list text-slate-400"></i>
+                    <span id="txt-hero-btn-list" data-i18n="hero_btn_list">Semak Senarai Tempahan</span>
+                </button>
+            </div>
+
+            <!-- Informasi Spesifikasi Utama (3 Kolom) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 pt-8 sm:pt-12 px-2">
+                <div class="p-4 sm:p-5 rounded-xl bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 hover:border-brand-500/30 transition-all">
+                    <span class="block text-xl sm:text-2xl font-bold text-white mb-1">1</span>
+                    <span id="txt-stat-courts" class="text-[10px] sm:text-xs text-slate-400 block uppercase tracking-wide" data-i18n="stat_courts">Gelanggang Lantai Kayu</span>
+                </div>
+                <div class="p-4 sm:p-5 rounded-xl bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 hover:border-brand-500/30 transition-all">
+                    <span class="block text-xl sm:text-2xl font-bold text-white mb-1">8:00 AM - 12:15 AM</span>
+                    <span id="txt-stat-hours" class="text-[10px] sm:text-xs text-slate-400 block uppercase tracking-wide" data-i18n="stat_hours">Jam Operasi Setiap Hari</span>
+                </div>
+                <div class="p-4 sm:p-5 rounded-xl bg-slate-900/40 backdrop-blur-sm border border-slate-800/60 hover:border-brand-500/30 transition-all">
+                    <span id="txt-stat-floor-title" class="block text-xl sm:text-2xl font-bold text-white mb-1" data-i18n="stat_floor_title">Kayu Keras</span>
+                    <span id="txt-stat-floor-desc" class="text-[10px] sm:text-xs text-slate-400 block uppercase tracking-wide" data-i18n="stat_floor_desc">Sistem Lantai Kayu Komuniti</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SEKSYEN BORANG TEMPAHAN -->
+        <section id="section-tempahan" class="hidden w-full max-w-2xl mx-auto transition-all duration-500 px-2 sm:px-0">
+            <div class="bg-slate-900/70 backdrop-blur-md rounded-2xl border border-slate-800 shadow-2xl overflow-hidden">
+                <!-- Header Borang -->
+                <div class="bg-gradient-to-r from-brand-900/50 to-emerald-950/30 px-5 sm:px-6 py-5 sm:py-6 border-b border-slate-800 flex items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 min-w-0">
+                        <div class="p-2 bg-brand-500/20 rounded-lg text-brand-500 shrink-0">
+                            <i class="fa-solid fa-calendar-check text-xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h2 id="txt-form-title" class="text-base sm:text-xl font-bold text-white truncate" data-i18n="form_title">Borang Tempahan Gelanggang</h2>
+                            <p id="txt-form-desc" class="text-[10px] sm:text-xs text-slate-400 truncate" data-i18n="form_desc">Sila isi maklumat tempahan di bawah dengan lengkap.</p>
+                        </div>
+                    </div>
+                    <button onclick="showSection('home')" class="shrink-0 text-slate-400 hover:text-white text-xs bg-slate-800/50 hover:bg-slate-800 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-lg transition-colors flex items-center">
+                        <i class="fa-solid fa-chevron-left mr-1.5"></i> <span id="txt-form-back" data-i18n="form_back">Kembali</span>
+                    </button>
+                </div>
+
+                <!-- Tubuh Borang -->
+                <form id="booking-form" onsubmit="handleFormSubmit(event)" class="p-5 sm:p-8 space-y-5 sm:space-y-6">
+                    <!-- Nama Penuh -->
+                    <div>
+                        <label for="booking-name" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-form-name" data-i18n="form_lbl_name">Nama Penuh</span> <span class="text-brand-500">*</span></label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <input 
+                                type="text" 
+                                id="booking-name" 
+                                required 
+                                class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 pl-10 pr-4 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- No Telefon & Tarikh -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="booking-phone" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-form-phone" data-i18n="form_lbl_phone">No. Telefon</span> <span class="text-brand-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <input 
+                                    type="tel" 
+                                    id="booking-phone" 
+                                    required 
+                                    class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 pl-10 pr-4 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all"
+                                >
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="booking-date" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-form-date" data-i18n="form_lbl_date">Tarikh Tempahan</span> <span class="text-brand-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-solid fa-calendar-day"></i>
+                                </div>
+                                <input 
+                                    type="date" 
+                                    id="booking-date" 
+                                    required 
+                                    class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all"
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pilihan Gelanggang & Kadar Harga -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="booking-court" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-form-court" data-i18n="form_lbl_court">Pilih Gelanggang</span> <span class="text-brand-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-solid fa-table-tennis-paddle-ball"></i>
+                                </div>
+                                <select 
+                                    id="booking-court" 
+                                    required 
+                                    class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all appearance-none"
+                                >
+                                    <!-- Options will be translated and injected by JS -->
+                                </select>
+                                <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-solid fa-chevron-down text-xs"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label id="lbl-form-pay" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2" data-i18n="form_lbl_pay">Kaedah Bayaran</label>
+                            <div class="w-full bg-slate-950/30 border border-slate-800/80 rounded-xl py-3 px-4 text-xs sm:text-sm text-slate-300 flex items-center space-x-2 min-h-[46px]">
+                                <i class="fa-solid fa-circle-info text-brand-500 shrink-0"></i>
+                                <span id="txt-form-pay-info" data-i18n="form_pay_info">Bayaran dibuat setelah selesai permainan (Cash/QR Bank).</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Waktu Mula & Waktu Tamat -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-800/50">
+                        <div>
+                            <label for="booking-start" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-form-start" data-i18n="form_lbl_start">Dari Pukul Berapa</span> <span class="text-brand-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <input 
+                                    type="time" 
+                                    id="booking-start" 
+                                    required 
+                                    class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all"
+                                >
+                            </div>
+                            <span id="txt-form-start-sub" class="text-[10px] text-slate-400 mt-1.5 block" data-i18n="form_start_sub">Waktu mula seawal jam 08:00 AM</span>
+                        </div>
+
+                        <div>
+                            <label for="booking-end" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-form-end" data-i18n="form_lbl_end">Hingga Pukul Berapa</span> <span class="text-brand-500">*</span></label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <input 
+                                    type="time" 
+                                    id="booking-end" 
+                                    required 
+                                    class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all"
+                                >
+                            </div>
+                            <span id="txt-form-end-sub" class="text-[10px] text-slate-400 mt-1.5 block" data-i18n="form_end_sub">Waktu tamat selewat-lewatnya jam 12:15 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Hantar Borang -->
+                    <div class="pt-4">
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-500 to-emerald-600 hover:from-brand-600 hover:to-emerald-700 text-slate-950 font-bold rounded-xl shadow-lg shadow-brand-500/20 hover:shadow-brand-500/30 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2 text-sm sm:text-base">
+                            <i class="fa-solid fa-circle-check text-lg"></i>
+                            <span id="txt-form-submit" data-i18n="form_submit">Sahkan Tempahan Gelanggang</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 3. SEKSYEN SENARAI TEMPAHAN -->
+        <section id="section-senarai" class="hidden w-full max-w-5xl mx-auto transition-all duration-500 px-2 sm:px-0">
+            <div class="bg-slate-900/70 backdrop-blur-md rounded-2xl border border-slate-800 shadow-2xl overflow-hidden">
+                <!-- Header Senarai -->
+                <div class="bg-gradient-to-r from-slate-900/50 to-slate-950/30 px-5 sm:px-6 py-5 sm:py-6 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div class="flex items-center space-x-3 min-w-0">
+                        <div class="p-2 bg-brand-500/20 rounded-lg text-brand-500 shrink-0">
+                            <i class="fa-solid fa-list-check text-xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h2 id="txt-list-title" class="text-base sm:text-xl font-bold text-white truncate" data-i18n="list_title">Senarai Yang Telah Ditempah</h2>
+                            <p id="txt-list-desc" class="text-[10px] sm:text-xs text-slate-400 truncate" data-i18n="list_desc">Senarai tempahan slot gelanggang Court Gelong Bilal terkini.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2 shrink-0">
+                        <!-- Tombol Tambah Tempahan Baru -->
+                        <button onclick="showSection('tempahan')" class="px-4 py-2.5 bg-brand-500 hover:bg-brand-600 text-slate-950 text-xs sm:text-sm font-semibold rounded-lg shadow transition-all duration-150 flex items-center space-x-2">
+                            <i class="fa-solid fa-plus text-xs"></i>
+                            <span id="txt-list-btn-add" data-i18n="list_btn_add">Tambah Baru</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tapisan Carian & Jumlah Tempahan -->
+                <div class="p-4 bg-slate-900/30 border-b border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div class="relative w-full sm:w-72">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500 text-xs">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="search-booking" 
+                            oninput="filterBookings()" 
+                            class="w-full bg-slate-950/50 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-lg py-2.5 pl-9 pr-3 text-white text-xs placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all"
+                        >
+                    </div>
+                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium" id="total-bookings-text">
+                        <!-- Shows via JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Kontainer Jadual (Disesuaikan dengan Lebar Minimum agar tidak renyuk pada skrin telefon) -->
+                <div class="overflow-x-auto w-full -webkit-overflow-scrolling-touch">
+                    <table class="w-full text-left border-collapse min-w-[750px]">
+                        <thead>
+                            <tr class="border-b border-slate-800 bg-slate-950/40 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                                <th id="th-list-cust" class="py-4 px-5 sm:px-6 w-1/4" data-i18n="th_list_cust">Pelanggan</th>
+                                <th id="th-list-date" class="py-4 px-5 sm:px-6 w-1/5" data-i18n="th_list_date">Tarikh</th>
+                                <th id="th-list-court" class="py-4 px-5 sm:px-6 w-1/4" data-i18n="th_list_court">Gelanggang</th>
+                                <th id="th-list-time" class="py-4 px-5 sm:px-6 w-1/5" data-i18n="th_list_time">Masa (Mula - Tamat)</th>
+                                <th id="th-list-action" class="py-4 px-5 sm:px-6 text-center w-[100px]" data-i18n="th_list_action">Tindakan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bookings-table-body" class="divide-y divide-slate-800/50 text-sm text-slate-300">
+                            <!-- JS akan menyuntik senarai tempahan secara dinamik di sini -->
+                        </tbody>
+                    </table>
+
+                    <!-- Tampilan Sekiranya Rekod Kosong -->
+                    <div id="empty-state" class="hidden p-8 sm:p-12 text-center space-y-4">
+                        <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-900 text-slate-500 mb-2">
+                            <i class="fa-solid fa-calendar-xmark text-xl sm:text-2xl"></i>
+                        </div>
+                        <h3 id="txt-empty-title" class="text-sm sm:text-base font-semibold text-white" data-i18n="empty_title">Tiada Tempahan Ditemui</h3>
+                        <p id="txt-empty-desc" class="text-xs text-slate-400 max-w-xs mx-auto" data-i18n="empty_desc">Sila buat tempahan baru atau ubah kata kunci carian anda di atas.</p>
+                        <button onclick="showSection('tempahan')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold rounded-lg transition-colors inline-flex items-center space-x-2">
+                            <i class="fa-solid fa-calendar-plus"></i>
+                            <span id="txt-empty-btn" data-i18n="empty_btn">Mula Tempahan Sekarang</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SEKSYEN SEJARAH PERMAINAN (GAME HISTORY) -->
+        <section id="section-sejarah" class="hidden w-full max-w-5xl mx-auto transition-all duration-500 px-2 sm:px-0">
+            <div class="bg-slate-900/70 backdrop-blur-md rounded-2xl border border-slate-800 shadow-2xl overflow-hidden">
+                <!-- Header Sejarah -->
+                <div class="bg-gradient-to-r from-slate-900/50 to-slate-950/30 px-5 sm:px-6 py-5 sm:py-6 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <div class="flex items-center space-x-3 min-w-0">
+                        <div class="p-2 bg-brand-500/20 rounded-lg text-brand-500 shrink-0">
+                            <i class="fa-solid fa-clock-rotate-left text-xl"></i>
+                        </div>
+                        <div class="min-w-0">
+                            <h2 id="txt-history-title" class="text-base sm:text-xl font-bold text-white truncate" data-i18n="history_title">Sejarah Penggunaan Gelanggang</h2>
+                            <p id="txt-history-desc" class="text-[10px] sm:text-xs text-slate-400 truncate" data-i18n="history_desc">Penyimpanan rekod sewaan perlawanan yang telah tamat tempoh.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-2 shrink-0">
+                        <!-- Tombol Kosongkan Sejarah (Developer PIN diperlukan) -->
+                        <button onclick="openDeleteModal('all', 'clear-history')" class="px-4 py-2.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white text-xs sm:text-sm font-semibold rounded-lg border border-red-500/30 transition-all duration-150 flex items-center space-x-2">
+                            <i class="fa-solid fa-trash-sweep text-xs"></i>
+                            <span id="txt-history-btn-clear" data-i18n="history_btn_clear">Kosongkan Sejarah</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tapisan Carian & Jumlah Sejarah -->
+                <div class="p-4 bg-slate-900/30 border-b border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <div class="relative w-full sm:w-72">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500 text-xs">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+                        <input 
+                            type="text" 
+                            id="search-history" 
+                            oninput="filterHistory()" 
+                            class="w-full bg-slate-950/50 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-lg py-2.5 pl-9 pr-3 text-white text-xs placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all"
+                        >
+                    </div>
+                    <div class="text-[11px] sm:text-xs text-slate-400 font-medium" id="total-history-text">
+                        <!-- Generated by JS -->
+                    </div>
+                </div>
+
+                <!-- Kontainer Jadual Sejarah (Disesuaikan dengan Lebar Minimum agar tidak renyuk pada skrin telefon) -->
+                <div class="overflow-x-auto w-full -webkit-overflow-scrolling-touch">
+                    <table class="w-full text-left border-collapse min-w-[750px]">
+                        <thead>
+                            <tr class="border-b border-slate-800 bg-slate-950/40 text-slate-400 text-xs font-semibold uppercase tracking-wider">
+                                <th id="th-hist-cust" class="py-4 px-5 sm:px-6 w-1/4" data-i18n="th_hist_cust">Pelanggan</th>
+                                <th id="th-hist-date" class="py-4 px-5 sm:px-6 w-1/5" data-i18n="th_hist_date">Tarikh Tempahan</th>
+                                <th id="th-hist-court" class="py-4 px-5 sm:px-6 w-1/4" data-i18n="th_hist_court">Gelanggang</th>
+                                <th id="th-hist-time" class="py-4 px-5 sm:px-6 w-1/5" data-i18n="th_hist_time">Masa Bermain</th>
+                                <th id="th-hist-status" class="py-4 px-5 sm:px-6 text-center w-[100px]" data-i18n="th_hist_status">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-table-body" class="divide-y divide-slate-800/50 text-sm text-slate-300">
+                            <!-- JS akan menyuntik rekod sejarah bermain di sini -->
+                        </tbody>
+                    </table>
+
+                    <!-- Tampilan Sekiranya Sejarah Kosong -->
+                    <div id="history-empty-state" class="hidden p-8 sm:p-12 text-center space-y-4">
+                        <div class="inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-900 text-slate-500 mb-2">
+                            <i class="fa-solid fa-box-open text-xl sm:text-2xl"></i>
+                        </div>
+                        <h3 id="txt-hist-empty-title" class="text-sm sm:text-base font-semibold text-white" data-i18n="hist_empty_title">Tiada Sejarah Direkodkan</h3>
+                        <p id="txt-hist-empty-desc" class="text-xs text-slate-400 max-w-xs mx-auto" data-i18n="hist_empty_desc">Selepas mana-mana perlawanan aktif tamat mengikut waktu semasa, sistem akan memindahkannya ke sini secara automatik.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SEKSYEN TAMBAH SARANAN -->
+        <section id="section-saranan" class="hidden w-full max-w-3xl mx-auto transition-all duration-500 px-2 sm:px-0 space-y-6 sm:space-y-8">
+            <div class="space-y-6">
+                <!-- Penerangan Matlamat Halaman -->
+                <div class="bg-gradient-to-r from-brand-900/40 via-slate-900/80 to-slate-900/60 backdrop-blur-md rounded-2xl border border-slate-800 p-5 sm:p-8 text-center sm:text-left flex flex-col sm:flex-row items-center gap-5 sm:gap-6">
+                    <div class="p-4 bg-brand-500/10 rounded-2xl text-brand-500 text-2xl sm:text-3xl shrink-0">
+                        <i class="fa-solid fa-comments text-emerald-400 animate-bounce"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h2 id="txt-sug-hero-title" class="text-base sm:text-xl font-bold text-white mb-2" data-i18n="sug_hero_title">Suarakan Pendapat & Saranan Anda!</h2>
+                        <p id="txt-sug-hero-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="sug_hero_desc">
+                            Halaman ini disediakan khas sebagai platform untuk anda memberikan cadangan, saranan, serta maklum balas membina bagi menaik taraf sistem tempahan atas talian atau kemudahan fizikal di Court Gelong Bilal. Setiap pandangan anda amat dihargai demi keselesaan komuniti sukan kita!
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Kad Borang Saranan -->
+                <div class="bg-slate-900/70 backdrop-blur-md rounded-2xl border border-slate-800 shadow-2xl overflow-hidden">
+                    <div class="bg-gradient-to-r from-brand-900/30 to-slate-950/40 px-5 sm:px-6 py-4 sm:py-5 border-b border-slate-800 flex items-center justify-between">
+                        <div class="flex items-center space-x-3 min-w-0">
+                            <div class="p-2 bg-brand-500/20 rounded-lg text-brand-500 shrink-0">
+                                <i class="fa-solid fa-pen-nib text-lg"></i>
+                            </div>
+                            <h3 id="txt-sug-card-title" class="text-sm sm:text-lg font-bold text-white truncate" data-i18n="sug_card_title">Borang Maklum Balas Komuniti</h3>
+                        </div>
+                    </div>
+
+                    <form id="suggestion-form" onsubmit="handleSuggestionSubmit(event)" class="p-5 sm:p-8 space-y-5 sm:space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- Nama Pengguna -->
+                            <div>
+                                <label for="suggestion-name" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-sug-name" data-i18n="sug_lbl_name">Nama Anda</span> <span class="text-brand-500">*</span></label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                        <i class="fa-solid fa-user-tag text-sm"></i>
+                                    </div>
+                                    <input 
+                                        type="text" 
+                                        id="suggestion-name" 
+                                        required 
+                                        class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all"
+                                    >
+                                </div>
+                            </div>
+
+                            <!-- Kategori Saranan -->
+                            <div>
+                                <label for="suggestion-category" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-sug-cat" data-i18n="sug_lbl_cat">Kategori Maklum Balas</span> <span class="text-brand-500">*</span></label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                                        <i class="fa-solid fa-tags text-sm"></i>
+                                    </div>
+                                    <select 
+                                        id="suggestion-category" 
+                                        required 
+                                        class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 pl-10 pr-4 text-white text-sm focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all appearance-none"
+                                    >
+                                        <!-- Injected by JS based on current language -->
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none text-slate-500">
+                                        <i class="fa-solid fa-chevron-down text-xs"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Butiran Saranan -->
+                        <div>
+                            <label for="suggestion-text" class="block text-xs sm:text-sm font-semibold text-slate-200 mb-2"><span id="lbl-sug-detail" data-i18n="sug_lbl_detail">Butiran Cadangan Penambahbaikan</span> <span class="text-brand-500">*</span></label>
+                            <textarea 
+                                id="suggestion-text" 
+                                rows="4" 
+                                required 
+                                class="w-full bg-slate-950/80 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-3 px-4 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all resize-none"
+                            ></textarea>
+                        </div>
+
+                        <!-- Butang Hantar -->
+                        <button type="submit" class="w-full py-4 bg-brand-500 hover:bg-brand-600 text-slate-950 font-bold rounded-xl shadow-lg shadow-brand-500/10 hover:shadow-brand-500/20 transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center space-x-2 text-sm sm:text-base">
+                            <i class="fa-solid fa-paper-plane text-sm sm:text-base"></i>
+                            <span id="txt-sug-btn-submit" data-i18n="sug_btn_submit">Hantar Saranan Saya</span>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Paparan Log Saranan Komuniti Semasa -->
+                <div class="space-y-4">
+                    <h4 class="text-sm sm:text-base font-bold text-white flex items-center gap-2 px-1">
+                        <i class="fa-solid fa-clipboard-check text-brand-500"></i>
+                        <span id="txt-sug-list-title" data-i18n="sug_list_title">Saranan Komuniti Terkini</span>
+                    </h4>
+                    <div id="suggestions-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Disuntik secara dinamik oleh Javascript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Notifikasi Toast (Pengganti Alert Laluan Sistem) -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-10 opacity-0 transition-all duration-300 pointer-events-none max-w-[calc(100vw-40px)] sm:max-w-sm">
+        <div class="bg-slate-900 border border-slate-800 rounded-xl shadow-2xl p-4 flex items-center space-x-3">
+            <div id="toast-icon-bg" class="p-2.5 rounded-lg text-slate-950 shrink-0">
+                <i id="toast-icon" class="fa-solid"></i>
+            </div>
+            <div class="min-w-0">
+                <p id="toast-title" class="font-bold text-sm text-white truncate"></p>
+                <p id="toast-message" class="text-xs text-slate-400 mt-0.5 leading-normal"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pengesahan Batal Tempahan -->
+    <div id="delete-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm hidden">
+        <div class="bg-slate-900 border border-slate-800 max-w-md w-full rounded-2xl shadow-2xl overflow-hidden p-5 sm:p-6 space-y-5">
+            <div class="flex items-center space-x-3 text-red-500">
+                <div class="p-3 bg-red-500/10 rounded-full shrink-0">
+                    <i class="fa-solid fa-user-shield text-xl"></i>
+                </div>
+                <div class="min-w-0">
+                    <h3 id="txt-modal-title" class="text-base sm:text-lg font-bold text-white truncate" data-i18n="modal_title">Sahkan Hak Akses Pembangun</h3>
+                    <p id="txt-modal-subtitle" class="text-[10px] sm:text-xs text-slate-400 truncate" data-i18n="modal_subtitle">Tindakan ini memerlukan pengesahan pentadbir sistem.</p>
+                </div>
+            </div>
+            <p id="delete-modal-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <!-- Controlled by JS based on dynamic selection context -->
+            </p>
+            
+            <!-- Bahagian Input PIN Keselamatan Pembangun -->
+            <div class="space-y-2">
+                <label for="dev-pin" id="lbl-modal-pin" class="block text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider" data-i18n="modal_lbl_pin">PIN Pembangun (Developer PIN)</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500">
+                        <i class="fa-solid fa-key text-xs"></i>
+                    </div>
+                    <input 
+                        type="password" 
+                        id="dev-pin" 
+                        class="w-full bg-slate-950 border border-slate-800 hover:border-slate-700 focus:border-brand-500 rounded-xl py-2.5 pl-9 pr-4 text-white text-sm focus:outline-none focus:ring-1 focus:ring-brand-500 transition-all font-mono"
+                    >
+                </div>
+            </div>
+
+            <div class="flex space-x-3 justify-end pt-2">
+                <button onclick="closeDeleteModal()" id="txt-modal-back" class="px-3 sm:px-4 py-2 sm:py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg transition-colors" data-i18n="modal_back">
+                    Kembali
+                </button>
+                <button id="confirm-delete-btn" class="px-3 sm:px-4 py-2 sm:py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold rounded-lg transition-colors">
+                    <!-- Controlled dynamically by JS -->
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kaki Halaman (Footer) -->
+    <footer class="relative z-10 w-full backdrop-blur-md bg-slate-950/80 border-t border-slate-900/80 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <p id="txt-footer-copy" class="text-xs text-slate-500" data-i18n="footer_copy">&copy; 2026 Court Gelong Bilal (Dewan Serbaguna Lorong Surau Baru). Semua hak cipta terpelihara.</p>
+                <p id="txt-footer-desc" class="text-[10px] text-slate-600 mt-0.5" data-i18n="footer_desc">Sistem Pengurusan & Tempahan Gelanggang Kayu Badminton Berpusat.</p>
+            </div>
+            <div class="flex items-center space-x-4 text-slate-400 text-sm">
+                <a href="https://wa.me/60146233180?text=Salam%20Court%20Gelong%20Bilal%20(Dewan%20Serbaguna%20Lorong%20Surau%20Baru)%2C%20saya%20ingin%20bertanya%20mengenai%20tempahan%20gelanggang." target="_blank" rel="noopener noreferrer" class="hover:text-brand-500 transition-colors">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> <span id="txt-footer-contact" data-i18n="footer_contact">Hubungi Kami</span>
+                </a>
+                <span class="text-slate-700">|</span>
+                <a href="https://www.google.com/maps/search/?api=1&query=5.2947513,103.1368465" target="_blank" rel="noopener noreferrer" class="hover:text-brand-500 transition-colors">
+                    <i class="fa-solid fa-map-location-dot mr-1"></i> <span id="txt-footer-loc" data-i18n="footer_loc">Lokasi</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logika Aplikasi (JavaScript) -->
+    <script>
+        // Kamus Bahasa (Localization Dictionary)
+        const translations = {
+            ms: {
+                app_subtitle: "Pusat Badminton Komuniti",
+                menu_btn: "Menu Utama",
+                drawer_title: "Navigasi Laman",
+                drawer_subtitle: "Dewan Lorong Surau Baru",
+                nav_home: "Laman Utama",
+                nav_tempahan: "Sewa Gelanggang",
+                nav_start_lbl: "Mula",
+                nav_senarai: "Senarai Tempahan",
+                nav_sejarah: "Sejarah Permainan",
+                nav_saranan: "Tambah Saranan",
+                drawer_ops: "Waktu Operasi:",
+                drawer_wa: "Sembang WhatsApp",
+                hero_badge: "Gelanggang Kayu Dewan Serbaguna",
+                hero_title_1: "Alami Permainan Terbaik Di",
+                hero_title_2: "(Dewan Serbaguna Lorong Surau Baru)",
+                hero_desc: "Kemudahan gelanggang komuniti dengan sistem pencahayaan bebas silau dan lantai kayu berkualiti tinggi untuk keselesaan, lantunan optimum, serta prestasi maksimum permainan anda.",
+                hero_btn_book: "Sewa Gelanggang Sekarang",
+                hero_btn_list: "Semak Senarai Tempahan",
+                stat_courts: "Gelanggang Lantai Kayu",
+                stat_hours: "Jam Operasi Setiap Hari",
+                stat_floor_title: "Kayu Keras",
+                stat_floor_desc: "Sistem Lantai Kayu Komuniti",
+                form_title: "Borang Tempahan Gelanggang",
+                form_desc: "Sila isi maklumat tempahan di bawah dengan lengkap.",
+                form_back: "Kembali",
+                form_lbl_name: "Nama Penuh",
+                form_lbl_phone: "No. Telefon",
+                form_lbl_date: "Tarikh Tempahan",
+                form_lbl_court: "Pilih Gelanggang",
+                form_lbl_pay: "Kaedah Bayaran",
+                form_pay_info: "Bayaran dibuat setelah selesai permainan (Cash/QR Bank).",
+                form_lbl_start: "Dari Pukul Berapa",
+                form_start_sub: "Waktu mula seawal jam 08:00 AM",
+                form_lbl_end: "Hingga Pukul Berapa",
+                form_end_sub: "Waktu tamat selewat-lewatnya jam 12:15 AM",
+                form_submit: "Sahkan Tempahan Gelanggang",
+                list_title: "Senarai Yang Telah Ditempah",
+                list_desc: "Senarai tempahan slot gelanggang Court Gelong Bilal terkini.",
+                list_btn_add: "Tambah Baru",
+                th_list_cust: "Pelanggan",
+                th_list_date: "Tarikh",
+                th_list_court: "Gelanggang",
+                th_list_time: "Masa (Mula - Tamat)",
+                th_list_action: "Tindakan",
+                empty_title: "Tiada Tempahan Ditemui",
+                empty_desc: "Sila buat tempahan baru atau ubah kata kunci carian anda di atas.",
+                empty_btn: "Mula Tempahan Sekarang",
+                history_title: "Sejarah Penggunaan Gelanggang",
+                history_desc: "Penyimpanan rekod sewaan perlawanan yang telah tamat tempoh.",
+                history_btn_clear: "Kosongkan Sejarah",
+                th_hist_cust: "Pelanggan",
+                th_hist_date: "Tarikh Tempahan",
+                th_hist_court: "Gelanggang",
+                th_hist_time: "Masa Bermain",
+                th_hist_status: "Status",
+                hist_empty_title: "Tiada Sejarah Direkodkan",
+                hist_empty_desc: "Selepas mana-mana perlawanan aktif tamat mengikut waktu semasa, sistem akan memindahkannya ke sini secara automatik.",
+                sug_hero_title: "Suarakan Pendapat & Saranan Anda!",
+                sug_hero_desc: "Halaman ini disediakan khas sebagai platform untuk anda memberikan cadangan, saranan, serta maklum balas membina bagi menaik taraf sistem tempahan atas talian atau kemudahan fizikal di Court Gelong Bilal. Setiap pandangan anda amat dihargai demi keselesaan komuniti sukan kita!",
+                sug_card_title: "Borang Maklum Balas Komuniti",
+                sug_lbl_name: "Nama Anda",
+                sug_lbl_cat: "Kategori Maklum Balas",
+                sug_lbl_detail: "Butiran Cadangan Penambahbaikan",
+                sug_btn_submit: "Hantar Saranan Saya",
+                sug_list_title: "Saranan Komuniti Terkini",
+                modal_title: "Sahkan Hak Akses Pembangun",
+                modal_subtitle: "Tindakan ini memerlukan pengesahan pentadbir sistem.",
+                modal_lbl_pin: "PIN Pembangun (Developer PIN)",
+                modal_back: "Kembali",
+                footer_copy: "© 2026 Court Gelong Bilal (Dewan Serbaguna Lorong Surau Baru). Semua hak cipta terpelihara.",
+                footer_desc: "Sistem Pengurusan & Tempahan Gelanggang Kayu Badminton Berpusat.",
+                footer_contact: "Hubungi Kami",
+                footer_loc: "Lokasi",
+                
+                court_a: "Gelanggang Utama (Lantai Kayu - RM 10/Jam)",
+                cat_booking: "Sistem Tempahan Atas Talian",
+                cat_facility: "Kemudahan Fizikal Dewan",
+                cat_ui: "Reka Bentuk Web",
+                cat_others: "Lain-Lain Cadangan",
+                
+                placeholder_search: "Cari nama atau gelanggang...",
+                placeholder_sug_text: "Tuliskan saranan atau maklum balas anda di sini secara jelas...",
+                placeholder_sug_name: "Contoh: Amin Azmi",
+                placeholder_book_name: "Masukkan nama penuh anda",
+                placeholder_pin: "Masukkan PIN Keselamatan",
+                
+                toast_expired_title: "Kemas Kini Auto",
+                toast_expired_msg: "Sistem telah memindahkan slot permainan yang telah tamat ke Sejarah Permainan.",
+                toast_out_of_hours_title: "Luar Waktu Operasi",
+                toast_out_of_hours_msg: "Waktu tempahan mestilah di antara 8:00 AM hingga 12:15 AM sahaja.",
+                toast_time_error_title: "Ralat Waktu",
+                toast_time_error_msg: "Waktu tamat mestilah selepas waktu mula tempahan.",
+                toast_book_success_title: "Sewa Berjaya!",
+                toast_book_success_msg: "Tempahan {court} berjaya dibuat atas nama {name}.",
+                toast_sug_success_title: "Cadangan Dihantar",
+                toast_sug_success_msg: "Terima kasih! Maklum balas anda telah direkodkan dalam pangkalan data.",
+                toast_access_denied_title: "Akses Ditolak",
+                toast_access_denied_msg: "PIN Pembangun tidak sah! Anda tidak dibenarkan memproses tindakan ini.",
+                toast_delete_success_title: "Batal Berjaya",
+                toast_delete_success_msg: "Rekod tempahan anda telah dibatalkan dari sistem.",
+                toast_sug_delete_title: "Padam Berjaya",
+                toast_sug_delete_msg: "Log maklum balas komuniti telah dikeluarkan dari sistem.",
+                toast_clear_history_title: "Sejarah Dikosongkan",
+                toast_clear_history_msg: "Seluruh log sejarah penggunaan gelanggang berjaya dibersihkan.",
+                
+                toast_clash_title: "Slot Bertindih!",
+                toast_clash_msg: "Gelanggang ini telah ditempah oleh {name} dari jam {start} hingga {end}.",
+                
+                modal_desc_delete: "Tindakan memadam atau membatalkan data hanya dibenarkan kepada **Developer / Pihak Pengurusan** bagi mengelakkan sabotaj jadual bermain.",
+                modal_desc_clear: "Tindakan memadam seluruh data sejarah permainan dewan hanya dibenarkan kepada **Developer / Pihak Pengurusan** untuk penyelenggaraan pangkalan data.",
+                modal_desc_sug: "Tindakan memadam maklum balas komuniti memerlukan pengesahan Pembangun untuk integriti platform.",
+                btn_confirm_delete: "Sahkan Tindakan",
+                btn_confirm_clear: "Kosongkan Semua",
+                btn_confirm_sug: "Padam Saranan",
+                live_badge: "AKTIF",
+                finished_badge: "TAMAT",
+                finished_status: "Selesai Beraksi",
+                hour_selected: "Jam Sukan Terpilih",
+                dummy_sug_1: "Sistem web sangat responsif dan mod gelap amat moden! Mungkin boleh tambah pengesahan OTP selepas ini.",
+                dummy_sug_2: "Mohon pihak urus setia memeriksa jaring di Gelanggang A, terdapat sedikit kerosakan kecil di bucu atas.",
+                total_bookings: "Menunjukkan {count} daripada {total} tempahan",
+                total_bookings_none: "Tiada rekod dipaparkan",
+                total_history: "Menunjukkan {count} daripada {total} rekod lampau",
+                total_history_none: "Tiada rekod dipaparkan",
+                sug_none_msg: "Tiada saranan komuniti buat masa ini. Jadilah yang pertama memberikan maklum balas!"
+            },
+            en: {
+                app_subtitle: "Community Badminton Centre",
+                menu_btn: "Main Menu",
+                drawer_title: "Site Navigation",
+                drawer_subtitle: "Lorong Surau Baru Hall",
+                nav_home: "Home Page",
+                nav_tempahan: "Book Court",
+                nav_start_lbl: "Start",
+                nav_senarai: "Booking List",
+                nav_sejarah: "Game History",
+                nav_saranan: "Add Suggestions",
+                drawer_ops: "Operating Hours:",
+                drawer_wa: "Chat on WhatsApp",
+                hero_badge: "Multipurpose Hall Wooden Court",
+                hero_title_1: "Experience Your Best Game At",
+                hero_title_2: "(Lorong Surau Baru Multipurpose Hall)",
+                hero_desc: "Premium community court facilities with glare-free lighting systems and high-quality hardwood floors designed for superior comfort, optimum bounce, and peak performance.",
+                hero_btn_book: "Book Court Now",
+                hero_btn_list: "Check Booking List",
+                stat_courts: "Wooden Court Tracks",
+                stat_hours: "Daily Operating Hours",
+                stat_floor_title: "Hardwood",
+                stat_floor_desc: "Community Wooden Floor System",
+                form_title: "Court Booking Form",
+                form_desc: "Please complete the reservation details below fully.",
+                form_back: "Go Back",
+                form_lbl_name: "Full Name",
+                form_lbl_phone: "Phone Number",
+                form_lbl_date: "Reservation Date",
+                form_lbl_court: "Select Court Track",
+                form_lbl_pay: "Payment Method",
+                form_pay_info: "Payment is settled after the game session ends (Cash/Bank QR).",
+                form_lbl_start: "From (Start Time)",
+                form_start_sub: "Earliest start time is 08:00 AM",
+                form_lbl_end: "Until (End Time)",
+                form_end_sub: "Latest end time is 12:15 AM (midnight)",
+                form_submit: "Confirm Court Booking",
+                list_title: "Reserved Courts Schedule",
+                list_desc: "Live list of current and upcoming bookings at Court Gelong Bilal.",
+                list_btn_add: "Add New",
+                th_list_cust: "Customer",
+                th_list_date: "Date",
+                th_list_court: "Court Track",
+                th_list_time: "Time (Start - End)",
+                th_list_action: "Action",
+                empty_title: "No Bookings Found",
+                empty_desc: "Please schedule a new court reservation or modify your search keywords above.",
+                empty_btn: "Start Booking Now",
+                history_title: "Court Usage Logs",
+                history_desc: "Comprehensive list of finished reservation logs and historical match logs.",
+                history_btn_clear: "Clear All Logs",
+                th_hist_cust: "Player Name",
+                th_hist_date: "Booking Date",
+                th_hist_court: "Court Track",
+                th_hist_time: "Duration",
+                th_hist_status: "Status",
+                hist_empty_title: "No History Recorded Yet",
+                hist_empty_desc: "Once any active match matches the current system time expiration, the system migrates records here automatically.",
+                sug_hero_title: "Speak Your Mind & Guide Our Path!",
+                sug_hero_desc: "This platform is exclusively provided to gather constructive feedback, system features suggestions, and court infrastructure improvement requests for Court Gelong Bilal.",
+                sug_card_title: "Community Feedback Box",
+                sug_lbl_name: "Your Name",
+                sug_lbl_cat: "Feedback Classification",
+                sug_lbl_detail: "Improvement Suggestion Description",
+                sug_btn_submit: "Submit My Feedback",
+                sug_list_title: "Latest Community Insights",
+                modal_title: "Authorise Developer Credentials",
+                modal_subtitle: "This high-privilege action requires developer/administrator verification.",
+                modal_lbl_pin: "Developer Passcode",
+                modal_back: "Return",
+                footer_copy: "© 2026 Court Gelong Bilal (Lorong Surau Baru Multipurpose Hall). All rights reserved.",
+                footer_desc: "Centralized Community Wooden Badminton Court Reservation Utility.",
+                footer_contact: "Get in Touch",
+                footer_loc: "Navigation",
+                
+                court_a: "Main Court (Wooden Flooring - RM 10/Hour)",
+                cat_booking: "Online Reservation Portal",
+                cat_facility: "Physical Hall Infrastructure",
+                cat_ui: "Website Styling & UI Layout",
+                cat_others: "Alternative Improvement Input",
+                
+                placeholder_search: "Search player name, court, id...",
+                placeholder_sug_text: "State your system or facilities feedback explicitly and clearly here...",
+                placeholder_sug_name: "e.g., Amin Azmi",
+                placeholder_book_name: "Enter your full legal name",
+                placeholder_pin: "Enter Safety PIN Code",
+                
+                toast_expired_title: "Auto Expiry Routine",
+                toast_expired_msg: "Expired matches migrated to the Game History archive automatically.",
+                toast_out_of_hours_title: "Operating Hours Boundary",
+                toast_out_of_hours_msg: "Reservation must stay strictly between 8:00 AM and 12:15 AM.",
+                toast_time_error_title: "Time Logic Conflict",
+                toast_time_error_msg: "Session end hour must be set strictly after session start hour.",
+                toast_book_success_title: "Court Booked Successfully!",
+                toast_book_success_msg: "{court} reserved successfully for {name}.",
+                toast_sug_success_title: "Feedback Transmitted",
+                toast_sug_success_msg: "Thank you! Your feedback has been secured inside local cache records.",
+                toast_access_denied_title: "Access Denied",
+                toast_access_denied_msg: "Invalid Developer PIN! High-privilege command aborted.",
+                toast_delete_success_title: "Cancellation Complete",
+                toast_delete_success_msg: "Court reservation successfully cancelled and deleted.",
+                toast_sug_delete_title: "Feedback Destroyed",
+                toast_sug_delete_msg: "Community suggestion entry scrubbed from the platform database.",
+                toast_clear_history_title: "Logs Cleared",
+                toast_clear_history_msg: "All historical match archives wiped successfully.",
+                
+                toast_clash_title: "Slot Conflict!",
+                toast_clash_msg: "This court has already been reserved by {name} from {start} to {end}.",
+                
+                modal_desc_delete: "Deleting live court bookings is restricted to developers and hall management to prevent scheduler sabotage.",
+                modal_desc_clear: "Clearing the entire community history is restricted to developers for database purging operations.",
+                modal_desc_sug: "Deleting feedback requires Developer authorization to prevent user feedback evasion.",
+                btn_confirm_delete: "Confirm Deletion",
+                btn_confirm_clear: "Purge All Logs",
+                btn_confirm_sug: "Scrub Feedback",
+                live_badge: "LIVE",
+                finished_badge: "DONE",
+                finished_status: "Session Completed",
+                hour_selected: "Selected Sports Block",
+                dummy_sug_1: "The interface is super fast and looks extremely premium! Highly responsive dark mode layout.",
+                dummy_sug_2: "Please have someone check the net alignment on Court A. There is a slight tear near the top anchor.",
+                total_bookings: "Displaying {count} of {total} scheduled reservations",
+                total_bookings_none: "No matches match search query",
+                total_history: "Displaying {count} of {total} completed archives",
+                total_history_none: "No archive history available",
+                sug_none_msg: "No community insights shared yet. Be the first to express your ideas!"
+            }
+        };
+
+        let currentLang = localStorage.getItem('court_bilal_lang') || 'ms';
+    </script>
+
+    <script>
+        // Inisialisasi daftar tempahan (Mendapatkan data atau memuatkan dummy awal)
+        let bookings = [];
+        let suggestions = [];
+        let gameHistory = [];
+        let itemToDeleteId = null;
+        let deleteType = 'booking'; // 'booking', 'suggestion', 'history', 'clear-history'
+
+        // Menetapkan Bahasa Laman Web
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('court_bilal_lang', lang);
+            applyLanguage();
+        }
+
+        // Mengaplikasikan Terjemahan Pada Elemen DOM
+        function applyLanguage() {
+            // Kemaskini Visual Butang Toggle Bahasa
+            const btnMs = document.getElementById('lang-ms');
+            const btnEn = document.getElementById('lang-en');
+            if (currentLang === 'ms') {
+                btnMs.className = "px-2.5 py-1.5 text-[10px] font-extrabold rounded-lg bg-brand-500 text-slate-950 shadow-md transform scale-105 transition-all";
+                btnEn.className = "px-2.5 py-1.5 text-[10px] font-bold rounded-lg text-slate-400 hover:text-white transition-all";
+            } else {
+                btnMs.className = "px-2.5 py-1.5 text-[10px] font-bold rounded-lg text-slate-400 hover:text-white transition-all";
+                btnEn.className = "px-2.5 py-1.5 text-[10px] font-extrabold rounded-lg bg-brand-500 text-slate-950 shadow-md transform scale-105 transition-all";
+            }
+
+            // Kemaskini semua elemen ber-atribut data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerHTML = translations[currentLang][key];
+                }
+            });
+
+            // Kemaskini Dynamic Placeholders
+            const searchBookingInput = document.getElementById('search-booking');
+            if (searchBookingInput) searchBookingInput.placeholder = translations[currentLang].placeholder_search;
+
+            const searchHistoryInput = document.getElementById('search-history');
+            if (searchHistoryInput) searchHistoryInput.placeholder = translations[currentLang].placeholder_search;
+
+            const sugTextInput = document.getElementById('suggestion-text');
+            if (sugTextInput) sugTextInput.placeholder = translations[currentLang].placeholder_sug_text;
+
+            const sugNameInput = document.getElementById('suggestion-name');
+            if (sugNameInput) sugNameInput.placeholder = translations[currentLang].placeholder_sug_name;
+
+            const bookNameInput = document.getElementById('booking-name');
+            if (bookNameInput) bookNameInput.placeholder = translations[currentLang].placeholder_book_name;
+
+            const devPinInput = document.getElementById('dev-pin');
+            if (devPinInput) devPinInput.placeholder = translations[currentLang].placeholder_pin;
+
+            // Kemaskini Dynamic Form Selection Options
+            renderCourtOptions();
+            renderCategoryOptions();
+
+            // Render jadual semula supaya data dinamik terjemah dengan lancar
+            renderBookings();
+            renderSuggestions();
+            renderHistory();
+        }
+
+        // Menghasilkan Senarai Pilihan Gelanggang Dalam Bahasa Semasa
+        function renderCourtOptions() {
+            const selectCourt = document.getElementById('booking-court');
+            
+            selectCourt.innerHTML = `
+                <option value="court_a">${translations[currentLang].court_a}</option>
+            `;
+            selectCourt.value = 'court_a';
+        }
+
+        // Menghasilkan Senarai Pilihan Kategori Saranan Dalam Bahasa Semasa
+        function renderCategoryOptions() {
+            const selectCat = document.getElementById('suggestion-category');
+            const previousVal = selectCat.value || 'cat_booking';
+            
+            selectCat.innerHTML = `
+                <option value="cat_booking">${translations[currentLang].cat_booking}</option>
+                <option value="cat_facility">${translations[currentLang].cat_facility}</option>
+                <option value="cat_ui">${translations[currentLang].cat_ui}</option>
+                <option value="cat_others">${translations[currentLang].cat_others}</option>
+            `;
+            selectCat.value = previousVal;
+        }
+
+        // Membina objek tarikh tamat tempahan yang lengkap untuk perbandingan tepat
+        function getBookingEndDateTime(dateStr, timeStr) {
+            const [year, month, day] = dateStr.split('-').map(Number);
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            
+            // Cipta objek tarikh asal
+            let endDate = new Date(year, month - 1, day, hours, minutes, 0);
+            
+            // Mengambil kira sekiranya waktu tamat melepasi tengah malam (00:00 - 00:15 AM)
+            if (hours === 0 && minutes <= 15) {
+                endDate.setDate(endDate.getDate() + 1);
+            }
+            return endDate;
+        }
+
+        // Membersihkan tempahan yang telah tamat tempoh dari sistem dan memindahkannya ke Sejarah
+        function cleanupExpiredBookings() {
+            const now = new Date();
+            let expiredBookings = [];
+
+            // Hanya kekalkan tempahan yang waktu tamatnya adalah sama atau selepas waktu sekarang
+            bookings = bookings.filter(b => {
+                const endDateTime = getBookingEndDateTime(b.date, b.end);
+                const isExpired = endDateTime < now;
+                if (isExpired) {
+                    expiredBookings.push(b);
+                }
+                return !isExpired;
+            });
+
+            // Sekiranya ada tempahan tamat, masukkan ke dalam Sejarah
+            if (expiredBookings.length > 0) {
+                expiredBookings.forEach(eb => {
+                    // Elakkan duplikasi data di sejarah
+                    if (!gameHistory.some(h => h.id === eb.id)) {
+                        gameHistory.push(eb);
+                    }
+                });
+                saveBookings();
+                saveHistory();
+                renderBookings();
+                renderHistory();
+                
+                showToast(
+                    translations[currentLang].toast_expired_title, 
+                    translations[currentLang].toast_expired_msg, 
+                    'fa-clock-rotate-left', 
+                    'bg-slate-700'
+                );
+            }
+        }
+    </script>
+
+    <script>
+        // Berjalan secara automatik semasa halaman dimuatkan
+        window.onload = function() {
+            // Mengehadkan input tarikh minimum hanya untuk hari ini ke atas
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('booking-date').setAttribute('min', today);
+
+            // Periksa simpanan tempatan (LocalStorage)
+            const storedBookings = localStorage.getItem('court_gelong_bilal_bookings_v2');
+            if (storedBookings) {
+                bookings = JSON.parse(storedBookings);
+            } else {
+                // Jana masa untuk tempahan simulasi secara dinamik supaya ada LIVE dot dipaparkan terus
+                const now = new Date();
+                const currentHour = now.getHours();
+                
+                // Tempahan Live bermula 1 jam lepas dan berakhir 1 jam akan datang
+                const liveStartHour = String(currentHour === 0 ? 23 : currentHour - 1).padStart(2, '0');
+                const liveEndHour = String((currentHour + 1) % 24).padStart(2, '0');
+                
+                // Tempahan Akan Datang bermula 2 jam akan datang
+                const futureStartHour = String((currentHour + 2) % 24).padStart(2, '0');
+                const futureEndHour = String((currentHour + 4) % 24).padStart(2, '0');
+
+                bookings = [
+                    {
+                        id: 'CGB-812',
+                        name: 'Syed Al-Idrus',
+                        phone: '0198829101',
+                        date: today,
+                        court: 'court_a', // Stored as identifier
+                        start: `${liveStartHour}:00`,
+                        end: `${liveEndHour}:00`
+                    },
+                    {
+                        id: 'CGB-459',
+                        name: 'Muhammad Farhan',
+                        phone: '0139900223',
+                        date: today,
+                        court: 'court_a', // Stored as identifier
+                        start: `${futureStartHour}:00`,
+                        end: `${futureEndHour}:00`
+                    }
+                ];
+                saveBookings();
+            }
+
+            // Periksa simpanan saranan
+            const storedSuggestions = localStorage.getItem('court_gelong_bilal_suggestions_v2');
+            if (storedSuggestions) {
+                suggestions = JSON.parse(storedSuggestions);
+            } else {
+                suggestions = [
+                    {
+                        id: 'SUG-101',
+                        name: 'Faiz Subri',
+                        category: 'cat_booking',
+                        text_ms: translations.ms.dummy_sug_1,
+                        text_en: translations.en.dummy_sug_1,
+                        date: today
+                    },
+                    {
+                        id: 'SUG-102',
+                        name: 'Razif Sidek',
+                        category: 'cat_facility',
+                        text_ms: translations.ms.dummy_sug_2,
+                        text_en: translations.en.dummy_sug_2,
+                        date: today
+                    }
+                ];
+                saveSuggestions();
+            }
+
+            // Periksa simpanan sejarah permainan
+            const storedHistory = localStorage.getItem('court_gelong_bilal_history_v2');
+            if (storedHistory) {
+                gameHistory = JSON.parse(storedHistory);
+            } else {
+                const yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+                const dayBefore = new Date();
+                dayBefore.setDate(dayBefore.getDate() - 2);
+                const dayBeforeStr = dayBefore.toISOString().split('T')[0];
+
+                gameHistory = [
+                    {
+                        id: 'CGB-310',
+                        name: 'Datuk Wira Lee Chong Wei',
+                        phone: '0123344556',
+                        date: dayBeforeStr,
+                        court: 'court_a',
+                        start: '16:00',
+                        end: '18:00'
+                    },
+                    {
+                        id: 'CGB-991',
+                        name: 'Megat Aaron',
+                        phone: '0179988112',
+                        date: yesterdayStr,
+                        court: 'court_a',
+                        start: '20:30',
+                        end: '22:30'
+                    }
+                ];
+                saveHistory();
+            }
+            
+            // Jalankan Terjemahan Pertama kali
+            applyLanguage();
+
+            // Jalankan pembersihan real-time secara dinamik
+            cleanupExpiredBookings();
+            setInterval(cleanupExpiredBookings, 15000);
+            setInterval(renderBookings, 15000);
+        };
+
+        // Menukar seksyen halaman paparan (Single Page Application switcher)
+        function showSection(sectionId) {
+            document.getElementById('section-home').classList.add('hidden');
+            document.getElementById('section-tempahan').classList.add('hidden');
+            document.getElementById('section-senarai').classList.add('hidden');
+            document.getElementById('section-sejarah').classList.add('hidden');
+            document.getElementById('section-saranan').classList.add('hidden');
+
+            document.getElementById(`section-${sectionId}`).classList.remove('hidden');
+
+            // Kemaskini penggayaan butang navigasi aktif di dalam Laci Sisi
+            const navIds = ['home', 'tempahan', 'senarai', 'sejarah', 'saranan'];
+            navIds.forEach(id => {
+                const navBtn = document.getElementById(`nav-${id}`);
+                if (navBtn) {
+                    if (id === sectionId) {
+                        navBtn.className = "w-full flex items-center justify-between p-3.5 rounded-xl text-left text-sm font-extrabold transition-all duration-200 text-brand-500 bg-brand-500/10 border-l-4 border-brand-500";
+                    } else {
+                        navBtn.className = "w-full flex items-center justify-between p-3.5 rounded-xl text-left text-sm font-semibold transition-all duration-200 text-slate-300 hover:text-white hover:bg-slate-900/50";
+                    }
+                }
+            });
+
+            toggleDrawer(false);
+        }
+
+        // Fungsi Membuka dan Menutup Laci Sisi Gelongsor (Drawer Overlay)
+        function toggleDrawer(show) {
+            const drawer = document.getElementById('side-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            const panel = document.getElementById('drawer-panel');
+
+            if (show) {
+                drawer.classList.remove('pointer-events-none');
+                overlay.classList.remove('bg-slate-950/0', 'backdrop-blur-[0px]');
+                overlay.classList.add('bg-slate-950/65', 'backdrop-blur-sm');
+                panel.classList.remove('translate-x-full');
+                panel.classList.add('translate-x-0');
+            } else {
+                drawer.classList.add('pointer-events-none');
+                overlay.classList.remove('bg-slate-950/65', 'backdrop-blur-sm');
+                overlay.classList.add('bg-slate-950/0', 'backdrop-blur-[0px]');
+                panel.classList.remove('translate-x-0');
+                panel.classList.add('translate-x-full');
+            }
+        }
+
+        function timeToMinutes(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            let totalMinutes = hours * 60 + minutes;
+            if (hours === 0 && minutes <= 15) {
+                totalMinutes += 24 * 60;
+            }
+            return totalMinutes;
+        }
+
+        // Pengesahan dan penghantaran borang tempahan
+        function handleFormSubmit(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('booking-name').value.trim();
+            const phone = document.getElementById('booking-phone').value.trim();
+            const date = document.getElementById('booking-date').value;
+            const court = document.getElementById('booking-court').value;
+            const start = document.getElementById('booking-start').value;
+            const end = document.getElementById('booking-end').value;
+
+            const startMins = timeToMinutes(start);
+            const endMins = timeToMinutes(end);
+
+            const minAllowedMins = 8 * 60; 
+            const maxAllowedMins = 24 * 60 + 15;
+
+            // Validasi had waktu operasi
+            if (startMins < minAllowedMins || startMins > maxAllowedMins || endMins < minAllowedMins || endMins > maxAllowedMins) {
+                showToast(
+                    translations[currentLang].toast_out_of_hours_title, 
+                    translations[currentLang].toast_out_of_hours_msg, 
+                    'fa-triangle-exclamation', 
+                    'bg-amber-500'
+                );
+                return;
+            }
+
+            // Validasi: Waktu tamat mestilah melebihi waktu mula
+            if (startMins >= endMins) {
+                showToast(
+                    translations[currentLang].toast_time_error_title, 
+                    translations[currentLang].toast_time_error_msg, 
+                    'fa-triangle-exclamation', 
+                    'bg-amber-500'
+                );
+                return;
+            }
+
+            // Sistem Pengesan Tindihan Masa (Clash Detection)
+            const clash = bookings.find(b => {
+                if (b.date === date && b.court === court) {
+                    const extStart = timeToMinutes(b.start);
+                    const extEnd = timeToMinutes(b.end);
+                    return (startMins < extEnd && endMins > extStart);
+                }
+                return false;
+            });
+
+            if (clash) {
+                let clashMsg = translations[currentLang].toast_clash_msg
+                    .replace('{name}', clash.name)
+                    .replace('{start}', clash.start)
+                    .replace('{end}', clash.end);
+                    
+                showToast(
+                    translations[currentLang].toast_clash_title, 
+                    clashMsg, 
+                    'fa-calendar-times', 
+                    'bg-red-500'
+                );
+                return;
+            }
+
+            const bookingId = 'CGB-' + Math.floor(100 + Math.random() * 900);
+
+            const newBooking = {
+                id: bookingId,
+                name: name,
+                phone: phone,
+                date: date,
+                court: court, // saved as identifier key like court_a
+                start: start,
+                end: end
+            };
+
+            bookings.push(newBooking);
+            saveBookings();
+            renderBookings();
+
+            document.getElementById('booking-form').reset();
+
+            // Sediakan mesej tersuai yang diterjemah dengan data dinamik
+            let courtTrans = translations[currentLang][court] || court;
+            let successMsg = translations[currentLang].toast_book_success_msg
+                .replace('{court}', courtTrans)
+                .replace('{name}', name);
+
+            showToast(
+                translations[currentLang].toast_book_success_title, 
+                successMsg, 
+                'fa-circle-check', 
+                'bg-brand-500'
+            );
+
+            showSection('senarai');
+        }
+
+        // Memproses penyerahan borang saranan komuniti
+        function handleSuggestionSubmit(event) {
+            event.preventDefault();
+
+            const sName = document.getElementById('suggestion-name').value.trim();
+            const sCategory = document.getElementById('suggestion-category').value;
+            const sText = document.getElementById('suggestion-text').value.trim();
+            const sDate = new Date().toISOString().split('T')[0];
+
+            const suggestionId = 'SUG-' + Math.floor(100 + Math.random() * 900);
+
+            const newSuggestion = {
+                id: suggestionId,
+                name: sName,
+                category: sCategory,
+                // Simpan dua-dua bahasa untuk teks input pengguna yang sama
+                text_ms: sText,
+                text_en: sText, 
+                date: sDate
+            };
+
+            suggestions.push(newSuggestion);
+            saveSuggestions();
+            renderSuggestions();
+
+            document.getElementById('suggestion-form').reset();
+
+            showToast(
+                translations[currentLang].toast_sug_success_title, 
+                translations[currentLang].toast_sug_success_msg, 
+                'fa-comments', 
+                'bg-brand-500'
+            );
+        }
+
+        // Memaparkan rekod saranan ke dalam elemen grid
+        function renderSuggestions() {
+            const listContainer = document.getElementById('suggestions-list');
+            listContainer.innerHTML = '';
+
+            if (suggestions.length === 0) {
+                listContainer.innerHTML = `
+                    <div class="col-span-1 md:col-span-2 text-center p-8 bg-slate-900/30 rounded-xl border border-slate-800">
+                        <i class="fa-solid fa-comment-slash text-slate-600 text-xl block mb-2"></i>
+                        <span class="text-xs text-slate-500">${translations[currentLang].sug_none_msg}</span>
+                    </div>
+                `;
+                return;
+            }
+
+            const sortedSuggestions = [...suggestions].reverse();
+
+            sortedSuggestions.forEach(item => {
+                const options = { year: 'numeric', month: 'short', day: 'numeric' };
+                const formattedDate = new Date(item.date).toLocaleDateString(currentLang === 'ms' ? 'ms-MY' : 'en-US', options);
+
+                let categoryIcon = "fa-circle-question text-teal-400";
+                if (item.category === "cat_booking") categoryIcon = "fa-clock text-emerald-400";
+                if (item.category === "cat_facility") categoryIcon = "fa-racquet text-blue-400";
+                if (item.category === "cat_ui") categoryIcon = "fa-display text-purple-400";
+
+                let catName = translations[currentLang][item.category] || item.category;
+                let textVal = currentLang === 'ms' ? (item.text_ms || item.text_en) : (item.text_en || item.text_ms);
+
+                const card = document.createElement('div');
+                card.className = "p-5 rounded-xl bg-slate-900/50 border border-slate-800/80 hover:border-slate-700/60 transition-all flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-950 px-2 py-1 rounded text-slate-400 flex items-center gap-1.5 border border-slate-800">
+                                <i class="fa-solid ${categoryIcon}"></i> ${catName}
+                            </span>
+                            <button onclick="openDeleteModal('${item.id}', 'suggestion')" class="opacity-0 group-hover:opacity-100 p-1 text-slate-600 hover:text-red-400 rounded transition-all" title="Delete suggestion">
+                                <i class="fa-solid fa-trash-can text-xs"></i>
+                            </button>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed italic">"${textVal}"</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/50 flex items-center justify-between text-[11px] text-slate-500">
+                        <span class="font-semibold text-slate-400">${item.name}</span>
+                        <span>${formattedDate}</span>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        function filterBookings() {
+            const searchQuery = document.getElementById('search-booking').value.toLowerCase();
+            renderBookings(searchQuery);
+        }
+
+        // Memaparkan data tempahan ke dalam jadual
+        function renderBookings(query = '') {
+            const tbody = document.getElementById('bookings-table-body');
+            const emptyState = document.getElementById('empty-state');
+            tbody.innerHTML = '';
+
+            const filtered = bookings.filter(b => {
+                let courtTrans = (translations[currentLang][b.court] || b.court).toLowerCase();
+                return b.name.toLowerCase().includes(query) || 
+                       courtTrans.includes(query) ||
+                       b.id.toLowerCase().includes(query);
+            });
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                document.getElementById('total-bookings-text').innerText = translations[currentLang].total_bookings_none;
+            } else {
+                emptyState.classList.add('hidden');
+                
+                let countStr = translations[currentLang].total_bookings
+                    .replace('{count}', filtered.length)
+                    .replace('{total}', bookings.length);
+                document.getElementById('total-bookings-text').innerText = countStr;
+
+                filtered.forEach(booking => {
+                    const formattedDate = new Date(booking.date).toLocaleDateString(currentLang === 'ms' ? 'ms-MY' : 'en-US', options);
+                    
+                    const now = new Date();
+                    const bookingDateStr = booking.date; 
+                    const startDateTime = new Date(`${bookingDateStr}T${booking.start}`);
+                    const endDateTime = getBookingEndDateTime(bookingDateStr, booking.end);
+                    
+                    const isLive = now >= startDateTime && now <= endDateTime;
+                    let courtText = translations[currentLang][booking.court] || booking.court;
+                    
+                    const tr = document.createElement('tr');
+                    tr.className = `transition-colors duration-150 group ${isLive ? 'bg-emerald-500/10 border-l-4 border-l-brand-500 animate-pulse-slow' : 'hover:bg-slate-900/30'}`;
+                    tr.innerHTML = `
+                        <td class="py-4 px-5 sm:px-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full shrink-0 ${isLive ? 'bg-brand-500 text-slate-950 border-brand-500' : 'bg-slate-800 text-slate-300 border-slate-700'} font-bold flex items-center justify-center text-xs border">
+                                    ${booking.name.charAt(0).toUpperCase()}
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="font-semibold text-white group-hover:text-brand-500 transition-colors flex items-center gap-1.5 flex-wrap">
+                                        <span class="truncate block max-w-[120px] sm:max-w-none">${booking.name}</span>
+                                        ${isLive ? `
+                                            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[8px] sm:text-[9px] font-bold bg-brand-500 text-slate-950 uppercase tracking-widest animate-pulse shrink-0">
+                                                ${translations[currentLang].live_badge}
+                                            </span>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-4 px-5 sm:px-6">
+                            <div class="text-white font-medium text-xs sm:text-sm">${formattedDate}</div>
+                            <div class="text-[10px] text-slate-500">ID: ${booking.id}</div>
+                        </td>
+                        <td class="py-4 px-5 sm:px-6 text-slate-300">
+                            <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-slate-900 border border-slate-800 text-slate-200">
+                                <i class="fa-solid fa-circle text-[6px] text-brand-500 mr-1.5 ${isLive ? 'animate-ping' : ''}"></i> ${courtText}
+                            </span>
+                        </td>
+                        <td class="py-4 px-5 sm:px-6">
+                            <div class="text-slate-100 font-mono font-medium flex items-center gap-1.5 flex-wrap text-xs sm:text-sm">
+                                <span>${booking.start} &mdash; ${booking.end}</span>
+                                ${isLive ? `
+                                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] font-bold bg-brand-500/10 text-brand-500 border border-brand-500/20 animate-pulse shrink-0">
+                                        <span class="relative flex h-1.5 w-1.5 mr-1.5">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-500"></span>
+                                        </span>
+                                        LIVE
+                                    </span>
+                                ` : ''}
+                            </div>
+                            <div class="text-[10px] text-slate-400">${translations[currentLang].hour_selected}</div>
+                        </td>
+                        <td class="py-4 px-5 sm:px-6 text-center">
+                            <button onclick="openDeleteModal('${booking.id}', 'booking')" class="p-2 text-slate-500 hover:text-red-400 bg-transparent hover:bg-slate-900 rounded-lg transition-all duration-150 min-h-[38px] min-w-[38px]" title="Delete Booking">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+        }
+
+        function filterHistory() {
+            const searchQuery = document.getElementById('search-history').value.toLowerCase();
+            renderHistory(searchQuery);
+        }
+
+        // Memaparkan sejarah permainan yang telah tamat sewaan
+        function renderHistory(query = '') {
+            const tbody = document.getElementById('history-table-body');
+            const emptyState = document.getElementById('history-empty-state');
+            tbody.innerHTML = '';
+
+            const filtered = gameHistory.filter(h => {
+                let courtTrans = (translations[currentLang][h.court] || h.court).toLowerCase();
+                return h.name.toLowerCase().includes(query) || 
+                       courtTrans.includes(query) ||
+                       h.id.toLowerCase().includes(query);
+            });
+
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+
+            if (filtered.length === 0) {
+                emptyState.classList.remove('hidden');
+                document.getElementById('total-history-text').innerText = translations[currentLang].total_history_none;
+            } else {
+                emptyState.classList.add('hidden');
+                
+                let countStr = translations[currentLang].total_history
+                    .replace('{count}', filtered.length)
+                    .replace('{total}', gameHistory.length);
+                document.getElementById('total-history-text').innerText = countStr;
+
+                const sortedHistory = [...filtered].reverse();
+
+                sortedHistory.forEach(record => {
+                    const formattedDate = new Date(record.date).toLocaleDateString(currentLang === 'ms' ? 'ms-MY' : 'en-US', options);
+                    let courtText = translations[currentLang][record.court] || record.court;
+                    
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-slate-900/20 transition-colors duration-150 border-l-4 border-l-slate-700";
+                    tr.innerHTML = `
+                        <td class="py-4 px-5 sm:px-6">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-950 text-slate-500 font-bold flex items-center justify-center text-xs border border-slate-800 shrink-0">
+                                    ${record.name.charAt(0).toUpperCase()}
+                                </div>
+                                <div class="min-w-0">
+                                    <div class="font-semibold text-slate-300 truncate max-w-[120px] sm:max-w-none">${record.name}</div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="py-4 px-5 sm:px-6">
+                            <div class="text-slate-400 font-medium text-xs sm:text-sm">${formattedDate}</div>
+                            <div class="text-[10px] text-slate-600">ID: ${record.id}</div>
+                        </td>
+                        <td class="py-4 px-5 sm:px-6 text-slate-400">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-slate-950 border border-slate-900 text-slate-400">
+                                <i class="fa-solid fa-circle text-[6px] text-slate-500 mr-1.5"></i> ${courtText}
+                            </span>
+                        </td>
+                        <td class="py-4 px-5 sm:px-6">
+                            <div class="text-slate-400 font-mono text-xs">${record.start} &mdash; ${record.end}</div>
+                            <div class="text-[10px] text-slate-600">${translations[currentLang].finished_status}</div>
+                        </td>
+                        <td class="py-4 px-5 sm:px-6 text-center">
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-950 text-slate-500 border border-slate-800">
+                                <i class="fa-solid fa-circle-check text-slate-500 mr-1.5"></i> ${translations[currentLang].finished_badge}
+                            </span>
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+        }
+
+        // Pengurusan Pembatalan & Pemadaman Berdasarkan Akses PIN Pembangun
+        function openDeleteModal(id, type = 'booking') {
+            itemToDeleteId = id;
+            deleteType = type;
+            
+            document.getElementById('dev-pin').value = '';
+            
+            const descText = document.getElementById('delete-modal-desc');
+            const confirmBtn = document.getElementById('confirm-delete-btn');
+            
+            if (type === 'clear-history') {
+                descText.innerText = translations[currentLang].modal_desc_clear;
+                confirmBtn.innerText = translations[currentLang].btn_confirm_clear;
+                confirmBtn.className = "px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold rounded-lg transition-colors";
+            } else if (type === 'suggestion') {
+                descText.innerText = translations[currentLang].modal_desc_sug;
+                confirmBtn.innerText = translations[currentLang].btn_confirm_sug;
+                confirmBtn.className = "px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold rounded-lg transition-colors";
+            } else {
+                descText.innerText = translations[currentLang].modal_desc_delete;
+                confirmBtn.innerText = translations[currentLang].btn_confirm_delete;
+                confirmBtn.className = "px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white text-xs font-semibold rounded-lg transition-colors";
+            }
+
+            document.getElementById('delete-modal').classList.remove('hidden');
+            
+            document.getElementById('confirm-delete-btn').onclick = function() {
+                confirmDelete();
+            };
+        }
+
+        function closeDeleteModal() {
+            document.getElementById('delete-modal').classList.add('hidden');
+            document.getElementById('dev-pin').value = '';
+            itemToDeleteId = null;
+        }
+
+        function confirmDelete() {
+            const enteredPin = document.getElementById('dev-pin').value.trim();
+            const developerPin = "2026";
+
+            if (enteredPin !== developerPin) {
+                showToast(
+                    translations[currentLang].toast_access_denied_title, 
+                    translations[currentLang].toast_access_denied_msg, 
+                    'fa-circle-xmark', 
+                    'bg-red-500'
+                );
+                return;
+            }
+
+            if (deleteType === 'booking' && itemToDeleteId) {
+                bookings = bookings.filter(b => b.id !== itemToDeleteId);
+                saveBookings();
+                renderBookings();
+                showToast(
+                    translations[currentLang].toast_delete_success_title, 
+                    translations[currentLang].toast_delete_success_msg, 
+                    'fa-trash-can', 
+                    'bg-brand-500'
+                );
+            } else if (deleteType === 'suggestion' && itemToDeleteId) {
+                suggestions = suggestions.filter(s => s.id !== itemToDeleteId);
+                saveSuggestions();
+                renderSuggestions();
+                showToast(
+                    translations[currentLang].toast_sug_delete_title, 
+                    translations[currentLang].toast_sug_delete_msg, 
+                    'fa-trash-can', 
+                    'bg-brand-500'
+                );
+            } else if (deleteType === 'clear-history') {
+                gameHistory = [];
+                saveHistory();
+                renderHistory();
+                showToast(
+                    translations[currentLang].toast_clear_history_title, 
+                    translations[currentLang].toast_clear_history_msg, 
+                    'fa-trash-sweep', 
+                    'bg-brand-500'
+                );
+            }
+            
+            closeDeleteModal();
+        }
+
+        // Penyimpanan data setempat pelayar
+        function saveBookings() {
+            localStorage.setItem('court_gelong_bilal_bookings_v2', JSON.stringify(bookings));
+        }
+
+        function saveSuggestions() {
+            localStorage.setItem('court_gelong_bilal_suggestions_v2', JSON.stringify(suggestions));
+        }
+
+        function saveHistory() {
+            localStorage.setItem('court_gelong_bilal_history_v2', JSON.stringify(gameHistory));
+        }
+
+        // Menghasikan reka bentuk Toast Notification tersuai yang kemas
+        function showToast(title, message, iconClass, colorClass) {
+            const toast = document.getElementById('toast');
+            const toastIconBg = document.getElementById('toast-icon-bg');
+            const toastIcon = document.getElementById('toast-icon');
+            const toastTitle = document.getElementById('toast-title');
+            const toastMessage = document.getElementById('toast-message');
+
+            toastIcon.className = `fa-solid ${iconClass}`;
+            toastIconBg.className = `p-2.5 rounded-xl text-slate-950 ${colorClass}`;
+            toastTitle.innerText = title;
+            toastMessage.innerText = message;
+
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
